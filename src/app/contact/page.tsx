@@ -19,7 +19,7 @@ export default function Contact() {
                         <input type="email" placeholder="Email" />
                         <textarea
                             placeholder="How can we improve?"
-                            className="w-full border border-b-black border-white px-3 mb-8 text-sm py-3 placeholder:text-black hover:border hover:border-black focus:border-black focus:border focus:outline-none h-40 max-h-40"
+                            className="w-full border resize-none border-b-black border-white px-3 mb-8 text-sm py-3 placeholder:text-black hover:border hover:border-black focus:border-black focus:border focus:outline-none h-40 max-h-40"
                         ></textarea>
                         <button className="bg-black text-white/90 hover:bg-black/80 transition-colors duration-300 text-xl px-20 py-3">
                             Send
@@ -27,7 +27,8 @@ export default function Contact() {
                     </form>
                 </div>
                 <Image
-                    fill={true}
+                    width={900}
+                    height={100}
                     src={'/img/contact.jpg'}
                     alt=""
                     className="w-full"
@@ -43,9 +44,9 @@ export default function Contact() {
                     <span className="block text-sm mb-8 font-light tracking-widest">
                         (555) 216-1326 | (555) 123-1130
                     </span>
-                    <div className="text-white justify-center gap-6 text-xl mx-auto w-full flex">
-                        <FaLocationDot />
-                        <BsInstagram />
+                    <div className="justify-center gap-6 text-xl mx-auto w-full flex">
+                        <FaLocationDot className="text-white transition-colors hover:text-Green duration-300 cursor-pointer" />
+                        <BsInstagram className="text-white transition-colors hover:text-Green duration-300 cursor-pointer" />
                     </div>
                 </div>
             </section>

@@ -8,34 +8,34 @@ import { usePathname } from 'next/navigation'
 
 export default function Header() {
     const pathname = usePathname()
-    const pathToHome = window.location.pathname == '/' ? '#home' : '/'
+    const pathToHome = pathname == '/' ? '#home' : '/'
 
-    const pathToAbout =
-        window.location.pathname == '/about' ? '#about' : '/about'
+    const pathToAbout = pathname == '/about' ? '#about' : '/about'
 
-    const pathToMenu = window.location.pathname == '/menu' ? '#menu' : '/menu'
+    const pathToMenu = pathname == '/menu' ? '#menu' : '/menu'
 
-    const pathToContact =
-        window.location.pathname == '/contact' ? '#contact' : '/contact'
+    const pathToContact = pathname == '/contact' ? '#contact' : '/contact'
 
     return (
         <>
-            <header className="w-8/12 relative mx-auto flex mt-7 mb-10 flex-col">
+            <header className="w-8/12 relative mx-auto flex mt-2 lg:mt-7 mb-10 flex-col">
                 <div className="flex w-full h-fit flex-col relative gap-2 items-center">
                     <Image
                         alt=""
-                        fill={true}
+                        width={300}
+                        height={20}
                         src={'/img/logo.png'}
-                        className="w-72 inline-block aspect-square"
+                        className="w-20 lg:w-72 h-fit inline-block"
+                        draggable={false}
                     />
-                    <span className="font-medium font-playfair">
+                    <span className="font-medium text-xs lg:text-base font-playfair">
                         R E S T A U R A N T
                     </span>
                 </div>
 
                 <hr className="w-full border-black my-5" />
 
-                <nav className="w-full relative flex justify-center">
+                <nav className="w-full relative hidden lg:flex justify-center">
                     <ul className="flex font-medium w-4/12 justify-between">
                         <li>
                             <Link className="nav__item" href={pathToHome}>
