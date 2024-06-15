@@ -6,20 +6,21 @@ export default function Hero() {
         <>
             <section
                 id="home"
-                className="w-10/12 h-auto text-white mx-auto mb-20 relative flex"
+                className="w-full lg:w-10/12 h-auto text-white mx-auto mb-10 relative flex flex-col lg:flex-row"
             >
-                <div className="w-full h-screen bg-black/[.35] z-0 absolute"></div>
+                {/* <div className="w-full h-screen bg-black/[.35] z-0 absolute"></div> */}
                 <div></div>
                 <Image
                     src={'/img/f.jpg'}
                     alt=""
-                    fill
+                    width={900}
+                    height={400}
                     quality={100}
-                    className="absolute left-0 top-0 w-full h-fit"
+                    className="lg:absolute lg:left-0 lg:top-0 w-full h-full"
                 />
-                <div className="w-6/12 py-28 pl-20 pr-10 h-screen z-10 bg-Green selection:bg-black/0 flex flex-col gap-5">
+                <div className="w-full lg:w-6/12 py-14 lg:py-28 lg:pl-20 lg:pr-10 h-fit lg:h-screen z-10 bg-Green selection:bg-black/0 flex flex-col gap-4 lg:gap-5 pl-6 pr-6">
                     <span
-                        className={`block text-7xl leading-tight ${montserrat.className}`}
+                        className={`block text-5xl lg:text-7xl leading-tight lg:leading-tight ${montserrat.className}`}
                     >
                         Green Gourmet Experience
                     </span>
