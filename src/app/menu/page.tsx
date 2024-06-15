@@ -1,4 +1,4 @@
-export default function Menu() {
+export default function MenuPage() {
     return (
         <>
             <section
