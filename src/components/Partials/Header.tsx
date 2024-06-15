@@ -2,15 +2,32 @@
 
 import Link from 'next/link'
 import { FaLocationDot } from 'react-icons/fa6'
+import { BiX } from 'react-icons/bi'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { BsInstagram } from 'react-icons/bs'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Header() {
     const pathname = usePathname()
     const [isNavOpen, setIsNavOpen] = useState<boolean>(false)
+
+    function handleNavOpen() {
+        setIsNavOpen((value) => !value)
+    }
+
+    useEffect(() => {
+        if (isNavOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'auto'
+        }
+    }, [isNavOpen, pathname])
+
+    useEffect(() => {
+        setIsNavOpen(false)
+    }, [pathname])
 
     return (
         <>
@@ -30,15 +47,33 @@ export default function Header() {
                 </div>
 
                 <div className="absolute block lg:hidden right-2 top-1/2 -translate-y-1/2 z-50">
-                    <RxHamburgerMenu className="text-2xl cursor-pointer transition-colors duration-300 hover:text-Green" />
+                    {isNavOpen ? (
+                        <BiX
+                            onClick={handleNavOpen}
+                            className="text-3xl cursor-pointer transition-colors duration-300 hover:text-Green"
+                        />
+                    ) : (
+                        <RxHamburgerMenu
+                            onClick={handleNavOpen}
+                            className="text-2xl cursor-pointer transition-colors duration-300 hover:text-Green"
+                        />
+                    )}
                 </div>
 
                 <hr className="w-full border-black mt-5 lg:mt-5 lg:mb-5" />
 
                 <nav
-                    className={`w-screen lg:w-full h-screen lg:h-fit fixed lg:relative flex justify-center bg-white lg:bg-transparent overflow-hidden lg:overflow-auto z-40 lg:z-0 top-0 left-0 py-14 lg:py-0`}
+                    className={`w-screen h-screen gap-10 lg:gap-0 lg:w-full lg:h-fit fixed lg:relative flex flex-col lg:flex-row items-center lg:items-start lg:justify-center bg-white lg:bg-transparent z-40 lg:scale-100 lg:opacity-100 lg:z-0 inset-0 py-28 lg:py-0 transition-all duration-300 ${
+                        isNavOpen
+                            ? 'scale-100 opacity-100'
+                            : 'scale-0 opacity-0'
+                    }`}
                 >
-                    <ul className="flex flex-col gap-6 lg:gap-0 lg:flex-row font-medium w-full lg:w-4/12 lg:justify-between items-center lg:items-start overflow-hidden">
+                    <ul
+                        className={`flex flex-col gap-9 lg:gap-0 lg:flex lg:flex-row font-medium w-full lg:w-4/12 lg:justify-between items-center lg:items-start ${
+                            isNavOpen ? 'flex' : 'hidden'
+                        }`}
+                    >
                         <li>
                             <Link
                                 className="nav__item"
@@ -50,7 +85,9 @@ export default function Header() {
                         <li>
                             <Link
                                 className="nav__item"
-                                href={'/about' ? '#about' : '/about'}
+                                href={
+                                    pathname == '/about' ? '#about' : '/about'
+                                }
                             >
                                 About
                             </Link>
@@ -58,7 +95,7 @@ export default function Header() {
                         <li>
                             <Link
                                 className="nav__item"
-                                href={'/menu' ? '#menu' : '/menu'}
+                                href={pathname == '/menu' ? '#menu' : '/menu'}
                             >
                                 Menu
                             </Link>
@@ -66,15 +103,23 @@ export default function Header() {
                         <li>
                             <Link
                                 className="nav__item"
-                                href={'/contact' ? '#contact' : '/contact'}
+                                href={
+                                    pathname == '/contact'
+                                        ? '#contact'
+                                        : '/contact'
+                                }
                             >
                                 Contact
                             </Link>
                         </li>
                     </ul>
-                    <div className="right-0 lg:absolute flex gap-5 items-center">
-                        <FaLocationDot className="nav__item" />
-                        <BsInstagram className="nav__item" />
+                    <div
+                        className={`right-0 lg:absolute flex lg:flex gap-7 lg:gap-5 items-center ${
+                            isNavOpen ? 'flex' : 'hidden'
+                        }`}
+                    >
+                        <FaLocationDot className="nav__icon" />
+                        <BsInstagram className="nav__icon" />
                     </div>
                 </nav>
             </header>

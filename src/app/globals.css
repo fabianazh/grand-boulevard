@@ -31,6 +31,9 @@
         @apply bg-[url('/img/1.jpg')] bg-center bg-no-repeat bg-cover;
     } */
     .nav__item {
-        @apply hover:text-Green duration-200 transition-colors cursor-pointer;
+        @apply text-2xl lg:text-base hover:text-Green duration-200 transition-colors cursor-pointer;
+    }
+    .nav__icon {
+        @apply text-xl lg:text-base hover:text-Green duration-200 transition-colors cursor-pointer;
     }
 }

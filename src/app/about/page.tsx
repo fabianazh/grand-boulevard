@@ -3,7 +3,7 @@ export default function AboutPage() {
         <>
             <section
                 id="about"
-                className="w-full bg-stone-200 py-24 text-center px-[22rem]"
+                className="w-full bg-stone-200 py-16 lg:py-24 text-center px-6 lg:px-[22rem]"
             >
                 <span className="mb-5 text-3xl font-light block">
                     THE STORY
