@@ -36,4 +36,18 @@
     .nav__icon {
         @apply text-xl lg:text-base hover:text-Green duration-200 transition-colors cursor-pointer;
     }
+    .menu-item {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .menu-item::before {
+        content: '';
+        flex-grow: 1;
+        border-bottom: 1px dotted #000;
+        margin: 0 8px;
+    }
 }

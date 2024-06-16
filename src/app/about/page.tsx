@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function AboutPage() {
     return (
         <>
@@ -17,7 +19,29 @@ export default function AboutPage() {
                     voluptatibus.
                 </span>
             </section>
-            <section>{/* <AboutCarousel /> */}</section>
+            <section className="w-full h-fit grid grid-cols-3 border">
+                <Image
+                    src={'/img/f4.jpg'}
+                    alt=""
+                    width={900}
+                    height={900}
+                    className="w-full h-full"
+                />
+                <Image
+                    src={'/img/f2.jpg'}
+                    alt=""
+                    width={900}
+                    height={900}
+                    className="w-full h-full"
+                />
+                <Image
+                    src={'/img/f3.jpg'}
+                    alt=""
+                    width={900}
+                    height={900}
+                    className="w-full h-full"
+                />
+            </section>
         </>
     )
 }
